@@ -138,7 +138,9 @@
             if (user) {
                 this.sysUserName = user.username;
                 this.sysUserAvatar = user.avatar;
-            }
+            }else{
+                this.$router.push('/login');
+			}
 
         }
     }

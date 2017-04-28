@@ -14,6 +14,16 @@ module.exports = {
         title: 'Hello world',
         template:"./index.html",
         favicon:'./favicon.ico',
+        inject: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true
+            // more options:
+            // https://github.com/kangax/html-minifier#options-quick-reference
+        },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+        chunksSortMode: 'dependency'
     })],
     module: {
         rules: [
@@ -53,10 +63,15 @@ module.exports = {
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-                loader: 'file-loader'
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'fonts/[name].[hash:7].[ext]'
+                }
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
+                // loader: 'url-loader',
                 loader: 'file-loader',
                 query: {
                     name: '[name].[ext]?[hash]'

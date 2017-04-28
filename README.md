@@ -1,7 +1,3 @@
-# test
-
-> test
-
 ## Build Setup
 
 ``` bash
@@ -15,4 +11,17 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## loader
+
+``` bash
+# 处理打包文件夹问题
+# install url-loader
+   test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'fonts/[name].[hash:7].[ext]'
+                }
+```
+
+
